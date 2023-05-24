@@ -1,9 +1,9 @@
-import { errorHandler } from "@/middlewares/error";
+import { asyncError, errorHandler } from "@/middlewares/error";
 import { Task } from "@/models/task";
 import { User } from "@/models/user";
 import { ConnectDB } from "@/utils/features";
 
-const handler = async (req, res) => {
+const handler = asyncError(async (req, res) => {
   if (req.method !== "POST")
     return errorHandler(res, 400, "only POST method is allowed");
   const { title, description } = req.body;
@@ -22,5 +22,5 @@ const handler = async (req, res) => {
   res.json({
     sucess: true,
   });
-};
+});
 export default handler;

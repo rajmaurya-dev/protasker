@@ -10,7 +10,7 @@ export const errorHandler = (
 };
 
 export const asyncError = (passedFunc) => (req, res) => {
-  Promise.resolve(passedFunc(req, res)).catch((err) => {
-    errorHandler(res, 500, err.message);
+  return Promise.resolve(passedFunc(req, res)).catch((err) => {
+    return errorHandler(res, 500, err.message);
   });
 };
