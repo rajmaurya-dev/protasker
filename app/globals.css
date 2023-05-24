@@ -1,4 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --black-gradient: linear-gradient(
+    144.39deg,
+    #ffffff -278.56%,
+    #6d6d6d -78.47%,
+    #11101d 91.61%
+  );
+}
+.glass {
+  background: transparent;
+}
 
+.glass:hover {
+  background: var(--black-gradient);
+}
+
+.gradient {
+  background: var(--black-gradient);
+}
