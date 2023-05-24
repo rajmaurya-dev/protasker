@@ -20,9 +20,9 @@ const schema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
 });
 
-mongoose.model = {};
+mongoose.models = {};
 export const Task = mongoose.model("Task", schema);
