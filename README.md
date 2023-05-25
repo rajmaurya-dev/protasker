@@ -14,7 +14,7 @@ ProTasker is a todo app that helps you revolutionize your procrastination, one t
 
 To run ProTasker locally, you need to have Node.js and MongoDB installed on your machine.
 
-1. Clone this repository: `git clone https://github.com/yourusername/protasker.git`
+1. Clone this repository: `git clone https://github.com/rajmaurya-dev/protasker.git`
 2. Install the dependencies: `npm install`
 3. Create a `.env` file in the root directory and add the following variables:
 
