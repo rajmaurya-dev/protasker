@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import Link from "next/link";
 import styles, { layout } from "../styles";
 const page = () => {
@@ -36,9 +36,5 @@ const page = () => {
     </div>
   );
 };
-export const metadata = {
-  title: "ProTasker - Login",
-  description:
-    "Log in to your ProTasker account and stay organized with your tasks.",
-};
+
 export default page;
