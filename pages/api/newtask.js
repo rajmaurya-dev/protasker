@@ -1,18 +1,17 @@
 import { asyncError, errorHandler } from "@/middlewares/error";
 import { Task } from "@/models/task";
 import { User } from "@/models/user";
-import { ConnectDB } from "@/utils/features";
+import { ConnectDB, checkAuth } from "@/utils/features";
 
 const handler = asyncError(async (req, res) => {
   if (req.method !== "POST")
     return errorHandler(res, 400, "only POST method is allowed");
-  const { title, description } = req.body;
   await ConnectDB();
-  const user = await User.create({
-    name: "Raj",
-    email: "rajmauray@example.com",
-    password: "123456",
-  });
+  const { title, description } = req.body;
+  if (!title || !description)
+    return errorHandler(res, 400, "Please enter all field");
+  const user = await checkAuth(req);
+  if (!user) return errorHandler(res, 401, "Login First");
   await Task.create({
     title,
     description,
@@ -21,6 +20,7 @@ const handler = asyncError(async (req, res) => {
 
   res.json({
     sucess: true,
+    message: "Task created successfully",
   });
 });
 export default handler;
