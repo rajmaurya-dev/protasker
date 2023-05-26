@@ -11,7 +11,7 @@ const handler = asyncError(async (req, res) => {
   if (!user) return errorHandler(res, 401, "Login first");
   const tasks = await Task.find({ user: user._id });
   res.json({
-    sucess: true,
+    success: true,
     tasks,
   });
 });

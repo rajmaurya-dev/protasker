@@ -19,7 +19,7 @@ const handler = asyncError(async (req, res) => {
   });
 
   res.json({
-    sucess: true,
+    success: true,
     message: "Task created successfully",
   });
 });
