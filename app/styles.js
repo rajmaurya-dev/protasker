@@ -22,7 +22,7 @@ const styles = {
 };
 
 export const layout = {
-  centerCardContainer: `flex justify-center items-center  h-[calc(100vh_-_64px)]`,
+  centerCardContainer: `flex justify-center items-center  h-[calc(100vh_-_80px)] md:h-[calc(100vh_-_64px)]`,
   centerCard: "",
   sectionReverse: `flex md:flex-row flex-col-reverse ${styles.paddingY}`,
 

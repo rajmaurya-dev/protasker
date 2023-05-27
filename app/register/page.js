@@ -6,7 +6,7 @@ import { Context } from "@/components/Clinets";
 import { toast } from "react-hot-toast";
 import { redirect } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +34,7 @@ const page = () => {
         toast.success(data.message);
       }
     } catch (error) {
-      return toast.error(data.message);
+      return toast.error(error);
     }
   };
   if (user._id) return redirect("/");
@@ -81,4 +81,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

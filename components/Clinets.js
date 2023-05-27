@@ -4,6 +4,9 @@ import Link from "next/link";
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+
 export const Context = createContext({ user: {} });
 export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -47,12 +50,41 @@ export const LogoutBtn = () => {
 };
 
 export const TaskBtn = ({ id, completed }) => {
-  const deleteHandler = (id) => {
-    alert(`Deleting ${id}`);
+  const router = useRouter();
+  const deleteHandler = async (id) => {
+    try {
+      const res = await fetch(`/api/task/${id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!data.success) return toast.error(data.message);
+      toast.success(data.message);
+      router.refresh();
+    } catch (error) {
+      return toast.error(error);
+    }
+  };
+  const updateHandler = async (id) => {
+    try {
+      const res = await fetch(`/api/task/${id}`, {
+        method: "PUT",
+      });
+      const data = await res.json();
+      if (!data.success) return toast.error(data.message);
+      toast.success(data.message);
+      router.refresh();
+    } catch (error) {
+      return toast.error(error);
+    }
   };
   return (
     <div className="flex flex-col justify-center gap-2">
-      <input checked={completed} type="checkbox" />
+      <input
+        checked={completed}
+        onClick={() => updateHandler(id)}
+        type="checkbox"
+        className="text-2xl"
+      />
 
       <button
         onClick={() => deleteHandler(id)}

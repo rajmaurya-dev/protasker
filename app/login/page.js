@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { Context } from "@/components/Clinets";
 import { redirect } from "next/navigation";
 import { toast } from "react-hot-toast";
-const page = () => {
+const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { user, setUser } = useContext(Context);
@@ -24,7 +24,7 @@ const page = () => {
         toast.success(data.message);
       }
     } catch (error) {
-      return toast.error(data.message);
+      return toast.error(error);
     }
   };
 
@@ -65,4 +65,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
